@@ -1,3 +1,93 @@
+library(CellChat)
+library(Seurat)
+
+axolotl_contra <- subset(axolottest, subset = sample == c('contra'))
+axolotl_intact <- subset(axolottest, subset = sample == c('intact'))
+
+interaction_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/interaction_input_CellChatDB.csv', row.names = 1)
+complex_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/complex_input_CellChatDB.csv', row.names = 1)
+cofactor_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/cofactor_input_CellChatDB.csv', row.names = 1)
+geneInfo <- read.csv(file = 'C://Users/Emil/10X/cellchat/geneInfo_input_CellChatDB.csv', row.names = 1)
+CellChatDB <- list()
+CellChatDB$interaction <- interaction_input
+CellChatDB$complex <- complex_input
+CellChatDB$cofactor <- cofactor_input
+CellChatDB$geneInfo <- geneInfo
+CellChatDB.mouse <- CellChatDB
+
+features = c('IGF-IR-IGF1R-AMEX60DD003508','HGF.L-HGF-AMEX60DD006229','MET-AMEX60DD006320','CIB84-004984-IGF1-AMEX60DD008414','EGF-AMEX60DD003122',
+             'EGF-AMEX60DD044302',
+             'EGF-AMEX60DD051379',
+             'ERBB1-EGFR-AMEX60DD022047',
+             'FGFR1-AMEX60DD002586',
+             'FGFRL1-AMEX60DD046097',
+             'FGFR2-AMEX60DD053280',
+             'FGFR-2-FGFR2-AMEX60DD053280',
+             'KGFR-FGFR2-AMEX60DD053280',
+             'FGFR3-AMEX60DD046037',
+             'FGFR4-AMEX60DD027855',
+             'FGF1-AMEX60DD028820',
+             'FGF-2-FGF2-AMEX60DD044865',
+             'FGF3-AMEX60DD005046',
+             'FGF4-AMEX60DD005045',
+             'FGF4-FGF6-AMEX60DD005045',
+             'FGF6-AMEX60DD006587',
+             'FGF7-AMEX60DD003767',
+             'FGF8-AMEX60DD052891',
+             'FGF9-AMEX60DD049338',
+             'FGF10-AMEX60DD042028',
+             'FGF11-AMEX60DDU001008401',
+             'FGF11-AMEX60DDU001008413',
+             'FGF11-AMEX60DDU001008413',
+             'FGF12-AMEX60DD003211',
+             'FGF12-AMEX60DD003212',
+             'FGF13-AMEX60DD037407',
+             'FGF14-AMEX60DD048162',
+             'DBR06-SOUSAS5610051-FGF14-AMEX60DD048159',
+             'BN2614-LOCUS1-FGF14-AMEX60DD048160',
+             'FGF16-AMEX60DD037078',
+             'FGF17-AMEX60DD002799',
+             'FGF18-AMEX60DD046672',
+             'FGF20-AMEX60DD045469',
+             'FGF21-AMEX60DD017409',
+             'FGF23-AMEX60DD006585',
+             'INS-AMEX60DD004535',
+             'INS-AMEX60DD004533',
+             'INSR-AMEX60DD014048',
+             'INSR-AMEX60DDU001028323',
+             'NGF-AMEX60DD008715',
+             'NGFR-AMEX60DD009964',
+             'NGFR-AMEX60DD026029',
+             'TGFBR1-AMEX60DD038999',
+             'TGFBR2-AMEX60DD022702',
+             'TGFBR2-AMEX60DD056061',
+             'TGFBR3-AMEX60DD019130',
+             'TGFBR3L-TGFBR3-AMEX60DD031769',
+             'TGFB1I1-AMEX60DD027949',
+             'TGFB1I1-PXN-AMEX60DD000525',
+             'TGFB2-AMEX60DD036126',
+             'TGFB2-AMEX60DD025328',
+             'TGFB3-AMEX60DDU001011686',
+             'TGFB3-AMEX60DDU001011687',
+             'TGFB3-AMEX60DD011162',
+             'TGFB3-AMEX60DD011161',
+             'NPY-AMEX60DD009927',
+             'NPY-AMEX60DD022071',
+             'PPY-AMEX60DD009929',
+             'TAC1-AMEX60DD022344',
+             'NPY1R-AMEX60DD001252',
+             'NPY1R-AMEX60DD045196',
+             'NPY2R-AMEX60DD030157',
+             'NPY2R-AMEX60DD045112',
+             'NPY5R.L-NPY5R-AMEX60DD045202',
+             'GPR83.L-AMEX60DD036978',
+             'GPR83.2.L-GPR83-AMEX60DD049565',
+             'GPR83.2-GPR83-AMEX60DD049565',
+             'TACR1-AMEX60DD002928',
+             'TACR1-AMEX60DD002932',
+             'TACR1-AMEX60DD002935'
+)
+
 cellchat <- createCellChat(object = axolotlsubset, group.by = "annotation")
 CellChatDB <- CellChatDB.mouse
 CellChatDB.use <- CellChatDB
