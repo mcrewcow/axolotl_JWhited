@@ -85,8 +85,25 @@ features = c('IGF-IR-IGF1R-AMEX60DD003508','HGF.L-HGF-AMEX60DD006229','MET-AMEX6
              'GPR83.2-GPR83-AMEX60DD049565',
              'TACR1-AMEX60DD002928',
              'TACR1-AMEX60DD002932',
-             'TACR1-AMEX60DD002935'
-)
+             'TACR1-AMEX60DD002935',
+             'WNT11-AMEX60DD049747',
+            'WNT9A-AMEX60DD020504',
+            'WNT10B-AMEX60DD029981',
+            'FZD1-AMEX60DD022211',
+            'FZD10-AMEX60DD000016',
+            'FZD2-AMEX60DD009878',
+            'FZD3-AMEX60DD032782',
+            'LLAP-16351-FZD4-AMEX60DD049634',
+            'FZD5-AMEX60DD055073',
+            'FZD6-AMEX60DD040248',
+            'FZD7-AMEX60DD054983',
+            'FZD8-AMEX60DD021741',
+            'FZD9-AMEX60DD054233',
+            'FZD2-AMEX60DD009877',
+            'FZD4-AMEX60DD049635',
+            'LRP5-AMEX60DD004352',
+            'LRP6-AMEX60DD006973',
+            'WNT11-AMEX60DD036922')
 
 cellchat <- createCellChat(object = axolotlsubset, group.by = "annotation")
 CellChatDB <- CellChatDB.mouse
