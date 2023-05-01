@@ -1,6 +1,8 @@
 library(CellChat)
 library(Seurat)
 
+strwidth <- function(x) {0.02}
+
 axolotl_contra <- subset(axolottest, subset = sample == c('contra'))
 axolotl_intact <- subset(axolottest, subset = sample == c('intact'))
 
