@@ -4,6 +4,9 @@ library(Seurat)
 axolotl_contra <- subset(axolottest, subset = sample == c('contra'))
 axolotl_intact <- subset(axolottest, subset = sample == c('intact'))
 
+axolotl_intact$labels <- axolotl_intact@active.ident
+axolotl_contra$labels <- axolotl_contra@active.ident
+
 interaction_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/interaction_input_CellChatDB.csv', row.names = 1)
 complex_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/complex_input_CellChatDB.csv', row.names = 1)
 cofactor_input <- read.csv(file = 'C://Users/Emil/10X/cellchat/cofactor_input_CellChatDB.csv', row.names = 1)
@@ -130,7 +133,7 @@ features = c('IGF-IR-IGF1R-AMEX60DD003508','HGF.L-HGF-AMEX60DD006229','MET-AMEX6
              'FZD4-AMEX60DD049635_LRP6-AMEX60DD006973'
 )
 
-cellchat <- createCellChat(object = axolotlsubset, group.by = "annotation")
+cellchat <- createCellChat(object = axolotl_intact, group.by = "labels")
 CellChatDB <- CellChatDB.mouse
 CellChatDB.use <- CellChatDB
 cellchat@DB <- CellChatDB.use
